@@ -3,7 +3,6 @@ from .forms import EncodindForm, DecodingForm
 from django.http import HttpResponseRedirect
 import sys
 import os
-from PIL import ImageTk
 from PIL import Image as im
 from numpy import array
 from numpy import vectorize as vec

@@ -1,0 +1,1 @@
+web: gunicorn steganography_python_django.wsgi

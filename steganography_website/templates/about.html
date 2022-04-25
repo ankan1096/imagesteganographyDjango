@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+	<title>About The Project</title>
+	<div class="container">
+      <div class="row" style="padding-left: 80px;">
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img src="static/images/Picture1.jpg" class="card-img-top" alt="...">
+              <div class="card-body bg-primary text-white">
+                <h5 class="card-title"><b>What Is Steganography?</b></h5>
+                <p class="card-text">Art and science of writing hidden messages in such a way that no one apart from the intended recipient knows of the existence of the message</p>
+              </div>
+              <div class="card-body">
+                <a href="https://www.google.com/search?client=firefox-b-d&q=What+Is+Steganography%3F">Know More</a>
+              </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img src="static/images/Picture2.jpg" class="card-img-top" alt="...">
+              <div class="card-body bg-info text-white">
+                <h5 class="card-title"><b>Evolution Of Steganography</b></h5>
+                <p class="card-text">Traces of steganography already existed in ancient Greece, when Herodotus narrated two examples in his Stories, but the first recorded use of the term was in 1499</p>
+              </div>
+              <div class="card-body">
+                <a href="https://www.telsy.com/steganography-from-its-origins-to-the-present/">Know More</a>
+              </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img src="static/images/Picture3.png" class="card-img-top" alt="...">
+              <div class="card-body bg-secondary text-white">
+                <h5 class="card-title"><b>Types Of Steganography</b></h5>
+                <p class="card-text">Steganography can be of 6 types based on the cover medium and they are known as Text, Image, Audio, Video, Network, Email Steganography</p>
+              </div>
+              <div class="card-body">
+                <a href="https://www.edureka.co/blog/steganography-tutorial">Know More</a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br/><br/>
+    <div class="container">
+      <div class="row" style="padding-left: 80px;">
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img src="static/images/Picture4.jpeg" class="card-img-top" alt="...">
+              <div class="card-body bg-primary text-white">
+                <h5 class="card-title"><b>Image Steganography</b></h5>
+                <p class="card-text">Image Steganography refers to the process of hiding data within an image file.The image selected for this purpose is called the cover image and the image obtained after steganography is called the stego image</p>
+              </div>
+              <div class="card-body">
+                <a href="https://www.google.com/search?q=image+steganography&source=lmns&bih=731&biw=1536&client=firefox-b-d&hl=en&sa=X&ved=2ahUKEwjU_YCt19H2AhVQjtgFHRUkBtAQ_AUoAHoECAEQAA">Know More</a>
+              </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img src="static/images/Picture5.jpg" class="card-img-top" alt="...">
+              <div class="card-body bg-info text-white">
+                <h5 class="card-title"><b>Layers Of An Image</b></h5>
+                <p class="card-text">Image steganography research  usually involves grey scale images as collector image.In Grey scale image there is only one image layer.A RGB color image has three color layers i.e. Red , Green and Blue</p>
+              </div>
+              <div class="card-body">
+                <a href="https://www.google.com/search?q=layers+of+a+RGB+image&source=lmns&bih=731&biw=1536&client=firefox-b-d&hl=en&sa=X&ved=2ahUKEwjMhL6j2dH2AhVIX2wGHcq5AU8Q_AUoAHoECAEQAA">Know More</a>
+              </div>
+          </div>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    </div>
+
+
+    <br/><br/>
+    <div class="container">
+      <div class="row" style="padding-left: 80px;">
+        <div class="col">
+          <div class="card">
+            <div class="card-header bg-info text-white"><b>Aim Of Our Project</b></div>
+            <div class="card-body">
+              <ul style="list-style-type:disc;">
+                <li>We are decomposing an RGB  cover image into it’s respective three layers first. (i.e. Red Layer , Green Layer , Blue Layer)</li>
+                <li>Now if we use one of the cover image layers to embed our secret message using least significant bit insertion technique, then also only one third of the container capacity is filled</li>
+                <li>Hence it is observed that, the capacity of storing the secret information can be increased</li>
+                <li>According to the  characteristics of human vision, the sensitivity of three components  of the color image is different. It is most sensitive to green, followed by red and least sensitive to blue</li>
+                <li>Hence we try to embed the secret information in Blue layer followed by Red layer as much as possible and try to embed the secret information in Green layer as less as possible</li>
+              </ul>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

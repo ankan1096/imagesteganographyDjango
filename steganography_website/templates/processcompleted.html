@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br/><br/>
+
+{% if type %}
+	<div class="container">
+		<div class="card">
+			<div class="card-header text-white bg-success mb-3">
+				<b>Decoding Process Completed Successfully!!</b>
+			</div>
+			<div class="card-body">
+				Please find the file : {{ stego_file_name }}.txt at location : {{ file_location }}
+			</div>
+		</div>
+	</div>
+{% else %}
+	<div class="container">
+		<div class="card">
+			<div class="card-header text-white bg-success mb-3">
+				<b>Encoding Process Completed Successfully!!</b>
+			</div>
+			<div class="card-body">
+				Please find the file : {{ stego_file_name }}.png at location : {{ file_location }}<br/>
+				Cover Image Size : {{ size_image_file }} bytes<br/>
+				Secret Data File Size : {{ size_secretdata_file }} bytes<br/>
+				Stego Ratio ( Secret Data File Size / Cover Image Size ) : {{ stego_ratio }}<br/>
+			</div>
+		</div>
+	</div>
+{% endif %}
+{% endblock %}

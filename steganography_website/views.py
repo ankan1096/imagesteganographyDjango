@@ -17,26 +17,42 @@ def home(request):
 	submitted = False
 	if request.method == "POST":
 		#encodingform = EncodindForm(request.POST)
-		user_input = request.POST.get('user_input')
-		secret_data_path = request.POST.get('secret_data_path')
+		#user_input = request.POST.get('user_input')
+		user_input = request.FILES['user_input']
+		#secret_data_path = request.POST.get('secret_data_path')
+		secret_data_path = request.FILES['secret_data_path']
 		layer_choice = request.POST.get('layer_choice')
 		stego_file_name = request.POST.get('stego_file_name')
 		file_location = request.POST.get('file_location')
 
+		
+		#image = im.open(user_input)
+		#arr = array(image)
+		#print(arr)
+		#secret_data = open(secret_data_path,'r+')
+		#secret_content = secret_data_path.read()
+		#data = ""
+		#for x in secret_content:
+			#data = data + chr(x)
+		#print(data)
+		#sys.stdout.flush()
 
-		size_image_file = os.path.getsize(user_input)
-		size_secretdata_file = os.path.getsize(secret_data_path)
-		stego_ratio = size_secretdata_file / size_image_file
 
-		assert os.path.exists(user_input), "I did not find the file at, "+str(user_input)
-		secret_data = open(secret_data_path,'r+')
+		#size_image_file = os.path.getsize(user_input)
+		#size_secretdata_file = os.path.getsize(secret_data_path)
+		#stego_ratio = size_secretdata_file / size_image_file
+
+		#assert os.path.exists(user_input), "I did not find the file at, "+str(user_input)
+		#secret_data = open(secret_data_path,'r+')
 
 		#performs encoding using LSB technique
 
 		image = im.open(user_input)
 		arr = array(image)
-		secret_content = secret_data.read()
-		secret_data.close()
+		secret_data = secret_data_path.read()
+		secret_content = ""
+		for x in secret_data:
+			secret_content = secret_content + chr(x)
 
 		red, green, blue = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2]
 
@@ -176,7 +192,8 @@ def home(request):
 		newImage.save(f"{file_location}/{stego_file_name}.png")
 
 		#return HttpResponseRedirect('/?submitted=True')
-		return render(request, 'processcompleted.html', {'type' : False, 'stego_file_name' : stego_file_name, 'file_location' : file_location, 'size_image_file' : size_image_file, 'size_secretdata_file' : size_secretdata_file, 'stego_ratio' : stego_ratio})
+		return render(request, 'processcompleted.html', {'type' : False, 'stego_file_name' : stego_file_name})
+		#return render(request, 'processcompleted.html', {'type' : False, 'stego_file_name' : stego_file_name, 'file_location' : file_location, 'size_image_file' : size_image_file, 'size_secretdata_file' : size_secretdata_file, 'stego_ratio' : stego_ratio})
 	else:
 		encodingform = EncodindForm
 		decodingform = DecodingForm

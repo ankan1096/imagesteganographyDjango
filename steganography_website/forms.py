@@ -8,8 +8,8 @@ LAYER_CHOICES= [
 
 class EncodindForm(forms.Form):
 
-	user_input = forms.CharField(widget = forms.TextInput(attrs={'class': 'form-control'}))
-	secret_data_path = forms.CharField(widget = forms.TextInput(attrs={'class': 'form-control'}))
+	user_input = forms.ImageField()
+	secret_data_path = forms.FileField()
 	layer_choice = forms.CharField(widget = forms.Select(choices = LAYER_CHOICES , attrs={'class' : 'form-control'}))
 	stego_file_name = forms.CharField(widget = forms.TextInput(attrs={'class': 'form-control'}))
 	file_location = forms.CharField(widget = forms.TextInput(attrs={'class': 'form-control'}))

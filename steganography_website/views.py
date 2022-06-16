@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import EncodindForm, DecodingForm
+from .forms import EncodindForm, DecodingForm, StegoObjectStoreForm
 from django.http import HttpResponseRedirect
 import sys
 import os
@@ -10,6 +10,20 @@ from numpy import binary_repr as binary
 from numpy import dstack as ds
 import cv2
 
+from io import StringIO
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from .models import StegoObjctStore
+
+from django.core.files.storage import FileSystemStorage
+
+
+from django.http import HttpResponse
+
+
+
+
+
 
 
 def home(request):
@@ -19,11 +33,13 @@ def home(request):
 		#encodingform = EncodindForm(request.POST)
 		#user_input = request.POST.get('user_input')
 		user_input = request.FILES['user_input']
+		
 		#secret_data_path = request.POST.get('secret_data_path')
 		secret_data_path = request.FILES['secret_data_path']
+		print(type(secret_data_path))
+		sys.stdout.flush()
 		layer_choice = request.POST.get('layer_choice')
 		stego_file_name = request.POST.get('stego_file_name')
-		file_location = request.POST.get('file_location')
 
 		
 		#image = im.open(user_input)
@@ -189,10 +205,34 @@ def home(request):
 
 		reconstructed_image = ds((red, green, blue))
 		newImage = im.fromarray(reconstructed_image, "RGB")
-		newImage.save(f"{file_location}/{stego_file_name}.png")
+		#print(type(newImage))
+		#sys.stdout.flush()
+
+
+		stego_file_name = stego_file_name + '.png'
+
+
+		buffer = BytesIO()
+		newImage.save(buffer, format = 'PNG')
+
+		image_file = InMemoryUploadedFile(buffer, None, stego_file_name, 'image/png', buffer.getvalue(), None)
+
+
+		print(type(image_file))
+		sys.stdout.flush()
+
+		fs = FileSystemStorage()
+		filename = fs.save(image_file.name, image_file)
+		uploaded_file_url = fs.url(filename)
+
+		print('url -->',uploaded_file_url)
+		sys.stdout.flush()
+
+
+		#newImage.save("/temp/{stego_file_name}.png")
 
 		#return HttpResponseRedirect('/?submitted=True')
-		return render(request, 'processcompleted.html', {'type' : False, 'stego_file_name' : stego_file_name})
+		return render(request, 'processcompleted.html', {'type' : False, 'stego_file_name' : stego_file_name, 'uploaded_file_url' : uploaded_file_url})
 		#return render(request, 'processcompleted.html', {'type' : False, 'stego_file_name' : stego_file_name, 'file_location' : file_location, 'size_image_file' : size_image_file, 'size_secretdata_file' : size_secretdata_file, 'stego_ratio' : stego_ratio})
 	else:
 		encodingform = EncodindForm
@@ -212,12 +252,10 @@ def about(request):
 def processcompleted(request):
 
 
-	user_input = request.POST.get('user_input')
+	user_input = request.FILES['user_input']
 	layer_choice = request.POST.get('layer_choice')
-	stego_file_name = request.POST.get('stego_file_name')
-	file_location = request.POST.get('file_location')
 
-	assert os.path.exists(user_input), "I did not find the file at, "+str(user_input)
+	#assert os.path.exists(user_input), "I did not find the file at, "+str(user_input)
 	image = im.open(user_input)
 	arr = array(image)
 
@@ -265,13 +303,27 @@ def processcompleted(request):
 		secret_character_ascii_value = int(secret_character_ascii_value_binary, 2)
 		secret_text = secret_text + chr(secret_character_ascii_value)
 
+	processcompleted.secret_data = secret_text
 
-	completeName = os.path.join(file_location, stego_file_name + ".txt")
-	file1 = open(completeName, "w")
-	file1.write(secret_text)
-	file1.close()
+	
+
+
+	#buffer = StringIO(secret_text)
+
+	
+
 
 
 	#print(user_input+" "+layer_choice+" "+stego_file_name+" "+file_location)
 	#sys.stdout.flush()
-	return render(request, 'processcompleted.html', {'type' : True, 'stego_file_name' : stego_file_name, 'file_location' : file_location})
+	return render(request, 'processcompleted.html', {'type' : True})
+
+
+
+def secret_text_download(request):
+	response = HttpResponse(content_type='text/plain')  
+	response['Content-Disposition'] = 'attachment; filename="secret_text.txt"'
+
+	response.write(processcompleted.secret_data)
+
+	return response

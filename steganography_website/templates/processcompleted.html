@@ -11,10 +11,14 @@
 				<b>Decoding Process Completed Successfully!!</b>
 			</div>
 			<div class="card-body">
-				Please find the file : {{ stego_file_name }}.txt at location : {{ file_location }}
+				<form style="padding-left:20px; padding-right: 20px;" action="/secret_text_download" method=POST>
+					{% csrf_token %}
+				<button type="submit" class="btn btn-primary">Click Here </button> to downlaod the secret text file
+				</form>
 			</div>
 		</div>
 	</div>
+	
 {% else %}
 	<div class="container">
 		<div class="card">
@@ -22,10 +26,7 @@
 				<b>Encoding Process Completed Successfully!!</b>
 			</div>
 			<div class="card-body">
-				Please find the file : {{ stego_file_name }}.png at location : {{ file_location }}<br/>
-				Cover Image Size : {{ size_image_file }} bytes<br/>
-				Secret Data File Size : {{ size_secretdata_file }} bytes<br/>
-				Stego Ratio ( Secret Data File Size / Cover Image Size ) : {{ stego_ratio }}<br/>
+				<a href="{{uploaded_file_url}}" download="">Click here </a> to download the STEGO IMAGE<br/>
 			</div>
 		</div>
 	</div>

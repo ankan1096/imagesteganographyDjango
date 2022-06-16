@@ -29,14 +29,12 @@
 		                  					{% csrf_token %}
 		                  					<div class="row">
 		                  						<div class="col">
-		                  							<label for="coverimagepath" class="form-label">Cover Image Path (.jpg format)</label><br/>
+		                  							<label for="coverimagepath" class="form-label">Upload Cover Image File</label><br/>
 		                  							{{ encodingform.user_input }}
-		                  							<div id="pathHelp" class="form-text">Example: C:\Users\HP\Desktop\image.jpg</div>
 		                  						</div>
 		                  						<div class="col">
-		                  							<label for="sercretdatapath" class="form-label">Secret Data Path (.txt format)</label><br/>
+		                  							<label for="sercretdatapath" class="form-label">Upload Secret Data File (.txt format)</label><br/>
 		                  							{{ encodingform.secret_data_path }}
-		                  							<div id="secretdatapathhelp" class="form-text">Example: C:\Users\HP\Desktop\data.txt</div>
 		                  						</div>
 		                  					</div>
 
@@ -55,17 +53,6 @@
 		                  						</div>
 		                  					</div>
 
-		                  					<br/><br/>
-		                  					<div class="row">
-		                  						<div class="col">
-		                  							<label for="stegofilelocation" class="form-label">Directory To Save The Stego Image</label>
-		                  							{{ encodingform.file_location }}
-		                  							<div id="locationHelp" class="form-text">Example: C:\Users\HP\Desktop</div>
-		                  						</div>
-		                  						<div class="col">
-		                  							
-		                  						</div>
-		                  					</div>
 
 		                  					<br/>
 		                  					<div class="row">
@@ -83,32 +70,17 @@
 		                			<p>Provide the stego image file and we will extract the secret text for you</p>
 		                			<br/><br/>
 		                			<div class="form-group">
-		                				<form style="padding-left:20px; padding-right: 20px;" action="/processcompleted" method="POST">
+		                				<form style="padding-left:20px; padding-right: 20px;" action="/processcompleted" method="POST" enctype="multipart/form-data">
 		                					{% csrf_token %}
 		                					<div class="row">
 		                						<div class="col">
-		                							<label for="stegoimagepath" class="form-label">Stego Image Path (.png format)</label>
+		                							<label for="stegoimagepath" class="form-label">Upload Stego Image File (.png format)</label>
 		                							{{ decodingform.user_input }}
-		                							<div id="pathHelp" class="form-text">Example: C:\Users\HP\Desktop\stego_image.png</div>
 		                						</div>
 		                						<div class="col">
 		                							<label for="layerchoice" class="form-label">Layer Name (r / g / b)</label>
 		                							{{ decodingform.layer_choice }}
 		                							<div id="layerchoiceHelp" class="form-text">Give The Layer Name To Retrieve The Data</div>
-		                						</div>
-		                					</div>
-
-		                					<br/><br/>
-		                					<div class="row">
-		                						<div class="col">
-		                							<label for="retrievedfilename" class="form-label">Retrieved Data File Name (without any extension)</label>
-		                							{{ decodingform.stego_file_name }}
-		                							<div id="filenameHelp" class="form-text">Name Of The Text File Where Retrieved Secret Data Is Stored</div>
-		                						</div>
-		                						<div class="col">
-		                							<label for="datafilelocation" class="form-label">Directory To Save The Retrieved Data</label>
-		                							{{ decodingform.file_location }}
-		                							<div id="locationHelp" class="form-text">Example: C:\Users\HP\Desktop</div>
 		                						</div>
 		                					</div>
 

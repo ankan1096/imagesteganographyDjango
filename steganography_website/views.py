@@ -303,6 +303,7 @@ def processcompleted(request):
 		secret_character_ascii_value = int(secret_character_ascii_value_binary, 2)
 		secret_text = secret_text + chr(secret_character_ascii_value)
 
+	processcompleted.secret_data = ""
 	processcompleted.secret_data = secret_text
 
 	

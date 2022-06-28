@@ -3,12 +3,36 @@
 
 {% block content %}
 
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+
+    footer {
+        margin-top: auto;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding: 3px;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: black;
+    }
+
+</style>
+
+
+
 	<title>About The Project</title>
 	<div class="container">
-      <div class="row" style="padding-left: 80px;">
-        <div class="col">
-          <div class="card" style="width: 18rem;">
-            <img src="static/images/Picture1.jpg" class="card-img-top" alt="...">
+      <div class="row gy-3 my-3">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="card border-dark mb-3">
+            <img src="static/images/Picture1.jpg" class="card-img-top" alt="..." height="250">
               <div class="card-body bg-primary text-white">
                 <h5 class="card-title"><b>What Is Steganography?</b></h5>
                 <p class="card-text">Art and science of writing hidden messages in such a way that no one apart from the intended recipient knows of the existence of the message</p>
@@ -18,21 +42,21 @@
               </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card" style="width: 18rem;">
-            <img src="static/images/Picture2.jpg" class="card-img-top" alt="...">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="card border-dark mb-3">
+            <img src="static/images/Picture2.jpg" class="card-img-top" alt="..." height="250">
               <div class="card-body bg-info text-white">
                 <h5 class="card-title"><b>Evolution Of Steganography</b></h5>
-                <p class="card-text">Traces of steganography already existed in ancient Greece, when Herodotus narrated two examples in his Stories, but the first recorded use of the term was in 1499</p>
+                <p class="card-text">Traces of steganography existed in ancient Greece,when Herodotus narrated examples in his Stories.The first recorded use of the term was in 1499</p>
               </div>
               <div class="card-body">
                 <a href="https://www.telsy.com/steganography-from-its-origins-to-the-present/">Know More</a>
               </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card" style="width: 18rem;">
-            <img src="static/images/Picture3.png" class="card-img-top" alt="...">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="card border-dark mb-3">
+            <img src="static/images/Picture3.png" class="card-img-top" alt="..." height="250">
               <div class="card-body bg-secondary text-white">
                 <h5 class="card-title"><b>Types Of Steganography</b></h5>
                 <p class="card-text">Steganography can be of 6 types based on the cover medium and they are known as Text, Image, Audio, Video, Network, Email Steganography</p>
@@ -42,15 +66,9 @@
               </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <br/><br/>
-    <div class="container">
-      <div class="row" style="padding-left: 80px;">
-        <div class="col">
-          <div class="card" style="width: 18rem;">
-            <img src="static/images/Picture4.jpeg" class="card-img-top" alt="...">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="card border-dark mb-3">
+            <img src="static/images/Picture4.jpeg" class="card-img-top" alt="..." height="250">
               <div class="card-body bg-primary text-white">
                 <h5 class="card-title"><b>Image Steganography</b></h5>
                 <p class="card-text">Image Steganography refers to the process of hiding data within an image file.The image selected for this purpose is called the cover image and the image obtained after steganography is called the stego image</p>
@@ -60,9 +78,9 @@
               </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card" style="width: 18rem;">
-            <img src="static/images/Picture5.jpg" class="card-img-top" alt="...">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="card border-dark mb-3">
+            <img src="static/images/Picture5.jpg" class="card-img-top" alt="..." height="250">
               <div class="card-body bg-info text-white">
                 <h5 class="card-title"><b>Layers Of An Image</b></h5>
                 <p class="card-text">Image steganography research  usually involves grey scale images as collector image.In Grey scale image there is only one image layer.A RGB color image has three color layers i.e. Red , Green and Blue</p>
@@ -72,17 +90,16 @@
               </div>
           </div>
         </div>
-        <div class="col">
-        </div>
       </div>
     </div>
 
+    <br/>
 
-    <br/><br/>
+
     <div class="container">
-      <div class="row" style="padding-left: 80px;">
+      <div class="row">
         <div class="col">
-          <div class="card">
+          <div class="card border-dark mb-3">
             <div class="card-header bg-info text-white"><b>Aim Of Our Project</b></div>
             <div class="card-body">
               <ul style="list-style-type:disc;">
@@ -97,5 +114,14 @@
         </div>
       </div>
     </div>
+
+
+
+    <footer>
+      Department of Information Technology, Jadavpur University, Kolkata<br/>
+      Made By Ankan Banerjee <a href="mailto:ankan1096@gmail.com">ankan1096@gmail.com</a> <br/>
+      Under the guidance of Prof. Utpal Kumar Ray <a href="mailto:utpal.ray@jadavpuruniversity.in">utpal.ray@jadavpuruniversity.in</a> <br/>
+      Mentorship of Mr Sujay Kumar Paul <a href="mailto:sujaykumarpaul@gmail.com">sujaykumarpaul@gmail.com</a>
+    </footer>
 
 {% endblock %}
